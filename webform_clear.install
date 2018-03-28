@@ -1,0 +1,55 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the webform_clear module.
+ *
+ */
+
+
+/**
+ * Implements hook_schema().
+ */
+function webform_clear_schema() {
+  $schema['webform_clear'] = array(
+    'description' => t('Webform Clear data'),
+    'fields' => array(
+      'nid' => array(
+        'description' => t('The node id'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'clear_time' => array(
+        'description' => t('How many seconds after a webform submission to clear it (0 = clear immediately; -1 or no entry = do not clear).'),
+        'type' => 'int',
+        'unsigned' => FALSE,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_update_last_removed().
+ */
+function webform_clear_update_last_removed() {
+  return 7201;
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function webform_clear_update_1000() {
+  $config = config('webform_clear.settings');
+  $config->set('webform_clear_default_time', update_variable_get('webform_clear_default_time', 'WEBFORM_CLEAR_DO_NOT_DELETE'));
+  update_variable_del('webform_clear_default_time');
+}
+
+/**
+ * Implements hook_install().
+ */
+function webform_clear_install() {
+}

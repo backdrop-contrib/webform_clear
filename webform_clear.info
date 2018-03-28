@@ -1,0 +1,7 @@
+name = Webform Clear
+description = Clears specific Webforms from the database after a specified period (or immediately upon submission).
+backdrop = 1.x
+type = module
+version = 1.x-1.2
+package = Webform
+dependencies[] = webform

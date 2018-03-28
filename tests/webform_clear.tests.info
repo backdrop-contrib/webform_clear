@@ -1,0 +1,6 @@
+[WebformClearSubmissionTestCase]
+name = Webform Clear - Submission tests
+description = Submits sample webforms with different clear settings and checks the database integrity.
+group = Webform Clear
+file = webform_clear.test
+
